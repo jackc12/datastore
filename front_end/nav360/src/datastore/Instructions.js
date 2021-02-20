@@ -34,7 +34,7 @@ export function Instructions(props) {
       <a href='https://www.kaggle.com/michau96/restaurant-business-rankings-2020'>Restaurant Business Rankings 2020</a>
       <h3 style={h3Style}>Click on a table entry to edit it</h3>
       <h3 style={h3Style}>Click the "Original Dataset" button to revert any changes</h3>
-      <button style={buttonStyle} onClick={_ => resetServer()}>Original Dataset</button>
+      <button style={buttonStyle} onClick={() => resetServer()}>Original Dataset</button>
     </div>
   );
 }

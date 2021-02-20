@@ -36,7 +36,6 @@ def update_values(row, col):
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
 
-
 @app.route('/original_dataset', methods=['GET'])
 def reset():
     with open(data_pickle_path, 'wb') as data_f, open(edited_table_entries_path, 'wb') as edited_table_entries_f:
@@ -53,7 +52,6 @@ def edited_entries():
     res = flask.jsonify(edited)
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
-
 
 if __name__ == '__main__':
 	app.run('127.0.0.1', 5000)
