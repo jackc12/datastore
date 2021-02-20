@@ -22,13 +22,9 @@ function resetServer() {
   fetch('http://127.0.0.1:5000/original_dataset')
   .then(res => res.json())
   .then(
-    result => {
-      console.log(result);
-    },
-    error => {
-      console.log(error);
-    }
-  )
+    result => {},
+    error => {}
+  );
   window.location.reload();
 }
 

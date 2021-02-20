@@ -17,7 +17,6 @@ export class TableElem extends React.Component {
       tableEntry: this.props.value,
     };
   }
-
   updateServer(row, col) {
     const newValue = window.prompt('Enter new value');
     if (newValue) {
@@ -51,5 +50,4 @@ export class TableElem extends React.Component {
       </td>
     );
   }
-
 }

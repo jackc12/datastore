@@ -17,7 +17,6 @@ export class DataStore extends React.Component {
       editedData: null,
     };
   }
-
   tableTransform() {
     if (this.state.data) {
       this.a = {};
@@ -31,28 +30,26 @@ export class DataStore extends React.Component {
       });
       this.setState({
         tableData: this.a,
-      })
+      });
     }
   }
-
   entriesStringToArray(result) {
-    var entries = [], rowCol =
+    var entries = [];
     result.slice(2,-2).split(']').map(entry => {
-      rowCol = [];
+      var rowCol = [];
       entry.split(',').map(entry => {
-        entry = entry.replace('[','')
+        entry = entry.replace('[','');
         entry = parseInt(entry);
         if (!isNaN(entry)) {
-          rowCol.push(entry)
+          rowCol.push(entry);
         }
       })
       if (rowCol.length) {
-        entries.push(rowCol)
+        entries.push(rowCol);
       }
     })
     return entries;
   }
-
   fetchTableData() {
     fetch('http://127.0.0.1:5000/get_table_data')
     .then(res => res.json())
@@ -70,7 +67,6 @@ export class DataStore extends React.Component {
       }
     )
   }
-
   fetchEditedData() {
     fetch('http://127.0.0.1:5000/get_edited_table_entries')
     .then(res => res.text())
@@ -87,17 +83,10 @@ export class DataStore extends React.Component {
       }
     )
   }
-
-  fetchData() {
+  componentDidMount() {
     this.fetchTableData();
     this.fetchEditedData();
   }
-
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
   render() {
     if (!this.state.tableData || !this.state.editedData) {
       return <h1 style={h1Style}>Loading</h1>;
@@ -107,6 +96,6 @@ export class DataStore extends React.Component {
         <Instructions />
         <Table columns={Object.keys(this.state.data)} editedData={this.state.editedData} data={this.state.tableData} />
       </div>
-    )
+    );
   }
 }
