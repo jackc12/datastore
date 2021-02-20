@@ -11,7 +11,7 @@ const thStyle = {
 
 export function TableHeading(props) {
   return (
-    props.keys.map((key, index) => {
+    props.columns.map((key, index) => {
       return <th key={key} style={thStyle}>{key.toUpperCase()}</th>;
     })
   );

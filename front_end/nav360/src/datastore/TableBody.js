@@ -1,29 +1,14 @@
 import React from 'react';
-import { TableElem } from './TableElem'
+import { TableRow } from './TableRow';
 
 export function TableBody(props) {
-  //reshape data to be rendered in table
-  var a = {};
-  Object.keys(props.data[Object.keys(props.data)[0]]).map((key, index) => {
-    a[index] = [];
-  })
-  Object.entries(props.data).map((entry, index) => {
-    Object.entries(entry[1]).map((_entry, _index) => {
-      a[_index].push(_entry[1]);
-    })
-  })
-
   return (
-    Object.entries(a).map((entry, rowIndex) => {
-      return (
-        <tr key={rowIndex}>
-        {
-          entry[1].map((entry, colIndex) => {
-            return <TableElem key={colIndex} col={colIndex} row={rowIndex} value={entry} />;
-          })
-        }
-        </tr>
-      );
-    })
+    <tbody> {
+      Object.entries(props.data).map((entry, rowIndex) => {
+        return (
+          <TableRow key={rowIndex} rowIndex={rowIndex} editedData={props.editedData} rowEntries={entry[1]} />
+        );
+      })
+    } </tbody>
   );
 }

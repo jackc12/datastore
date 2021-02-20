@@ -15,12 +15,10 @@ export function Table(props) {
       <table style={tableStyle}>
         <thead>
           <tr>
-            <TableHeading keys={Object.keys(props.data)}/>
+            <TableHeading columns={props.columns}/>
           </tr>
         </thead>
-          <tbody>
-            <TableBody data={props.data} />
-          </tbody>
+          <TableBody data={props.data} editedData={props.editedData} />
       </table>
     </div>
   );
